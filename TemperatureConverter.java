@@ -1,11 +1,14 @@
 public class TemperatureConverter {
 
     public static double convertTemperature(double temperature, String unit) {
-        if (!"CF".contains(unit.toUpperCase())) {
-            throw new IllegalArgumentException("Invalid scale " + unit);
+        switch (unit.trim().toUpperCase().charAt(0)) {
+            case 'C':
+                return celsiusToFahrenheit(temperature);
+            case 'F':
+                return fahrenheitToCelsius(temperature);
+            default:
+                throw new IllegalArgumentException("Invalid scale: " + unit);
         }
-        return unit.equalsIgnoreCase("C") ? celsiusToFahrenheit(temperature) :
-                unit.equalsIgnoreCase("F") ? fahrenheitToCelsius(temperature) : -1;
     }
 
     public static double celsiusToFahrenheit(double celsius) {
