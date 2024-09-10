@@ -1,5 +1,10 @@
 public class TemperatureConverter {
 
+    public double convertTemperature(double temperature, String unit) {
+        return unit.equalsIgnoreCase("C") ? celsiusToFahrenheit(temperature) :
+                unit.equalsIgnoreCase("F") ? fahrenheitToCelsius(temperature) : -1;
+    }
+
     public double celsiusToFahrenheit(double celsius) {
         return celsius * 9/5 + 32;
     }
